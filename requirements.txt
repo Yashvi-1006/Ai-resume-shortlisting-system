@@ -1,0 +1,16 @@
+pdfplumber
+python-docx
+spacy
+sentence-transformers
+streamlit
+plotly
+wordcloud
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+nltk
+openpyxl
+Flask==2.3.3
+Werkzeug==2.3.7

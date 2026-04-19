@@ -1,0 +1,195 @@
+{
+  "timestamp": "2026-04-17T14:55:57.261495",
+  "total": 20,
+  "summary": {
+    "avg_confidence": 86.56400000000001,
+    "categories": {
+      "Java Developer": 14,
+      "Hadoop": 6
+    }
+  },
+  "top_10": [
+    {
+      "id": 370,
+      "provided_category": "Java Developer",
+      "predicted_category": "Java Developer",
+      "confidence": 88.67,
+      "skills": [
+        "core java",
+        "css",
+        "databases",
+        "eclipse",
+        "html",
+        "java",
+        "jsp",
+        "sql"
+      ],
+      "skill_score": 2.38
+    },
+    {
+      "id": 398,
+      "provided_category": "Java Developer",
+      "predicted_category": "Java Developer",
+      "confidence": 88.67,
+      "skills": [
+        "core java",
+        "css",
+        "databases",
+        "eclipse",
+        "html",
+        "java",
+        "jsp",
+        "sql"
+      ],
+      "skill_score": 2.38
+    },
+    {
+      "id": 356,
+      "provided_category": "Java Developer",
+      "predicted_category": "Java Developer",
+      "confidence": 88.67,
+      "skills": [
+        "core java",
+        "css",
+        "databases",
+        "eclipse",
+        "html",
+        "java",
+        "jsp",
+        "sql"
+      ],
+      "skill_score": 2.38
+    },
+    {
+      "id": 384,
+      "provided_category": "Java Developer",
+      "predicted_category": "Java Developer",
+      "confidence": 88.67,
+      "skills": [
+        "core java",
+        "css",
+        "databases",
+        "eclipse",
+        "html",
+        "java",
+        "jsp",
+        "sql"
+      ],
+      "skill_score": 2.38
+    },
+    {
+      "id": 328,
+      "provided_category": "Java Developer",
+      "predicted_category": "Java Developer",
+      "confidence": 88.67,
+      "skills": [
+        "core java",
+        "css",
+        "databases",
+        "eclipse",
+        "html",
+        "java",
+        "jsp",
+        "sql"
+      ],
+      "skill_score": 2.38
+    },
+    {
+      "id": 342,
+      "provided_category": "Java Developer",
+      "predicted_category": "Java Developer",
+      "confidence": 88.67,
+      "skills": [
+        "core java",
+        "css",
+        "databases",
+        "eclipse",
+        "html",
+        "java",
+        "jsp",
+        "sql"
+      ],
+      "skill_score": 2.38
+    },
+    {
+      "id": 742,
+      "provided_category": "Hadoop",
+      "predicted_category": "Hadoop",
+      "confidence": 86.28,
+      "skills": [
+        "aws",
+        "database",
+        "databases",
+        "eclipse",
+        "java",
+        "linux",
+        "oracle",
+        "sql",
+        "svn",
+        "teradata",
+        "windows"
+      ],
+      "skill_score": 3.27
+    },
+    {
+      "id": 749,
+      "provided_category": "Hadoop",
+      "predicted_category": "Hadoop",
+      "confidence": 86.28,
+      "skills": [
+        "aws",
+        "database",
+        "databases",
+        "eclipse",
+        "java",
+        "linux",
+        "oracle",
+        "sql",
+        "svn",
+        "teradata",
+        "windows"
+      ],
+      "skill_score": 3.27
+    },
+    {
+      "id": 777,
+      "provided_category": "Hadoop",
+      "predicted_category": "Hadoop",
+      "confidence": 86.28,
+      "skills": [
+        "aws",
+        "database",
+        "databases",
+        "eclipse",
+        "java",
+        "linux",
+        "oracle",
+        "sql",
+        "svn",
+        "teradata",
+        "windows"
+      ],
+      "skill_score": 3.27
+    },
+    {
+      "id": 756,
+      "provided_category": "Hadoop",
+      "predicted_category": "Hadoop",
+      "confidence": 86.28,
+      "skills": [
+        "aws",
+        "database",
+        "databases",
+        "eclipse",
+        "java",
+        "linux",
+        "oracle",
+        "sql",
+        "svn",
+        "teradata",
+        "windows"
+      ],
+      "skill_score": 3.27
+    }
+  ]
+}

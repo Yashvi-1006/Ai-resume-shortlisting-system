@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AI Resume Shortlisting System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar h1 {
+            font-size: 24px;
+        }
+        
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        
+        .navbar a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .tab-btn {
+            padding: 12px 20px;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+        
+        .tab-btn:hover {
+            color: #667eea;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        textarea, input[type="text"], input[type="email"], input[type="file"], select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+        
+        textarea:focus, input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #667eea;
+        }
+        
+        .results {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .result-item {
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            background: #f9f9f9;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        
+        .result-item h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .score-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .score-badge.high {
+            background: #28a745;
+        }
+        
+        .score-badge.medium {
+            background: #ffc107;
+        }
+        
+        .score-badge.low {
+            background: #dc3545;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 8px;
+            font-size: 14px;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .message {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .message.show {
+            display: block;
+        }
+        
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .category-tag {
+            padding: 8px 12px;
+            background: #f0f0f0;
+            border-radius: 20px;
+            font-size: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background: #f9f9f9;
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        tr:hover {
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Resume Shortlisting Dashboard</h1>
+        <div>
+            <a href="/">Home</a>
+            <a href="#" onclick="location.reload()">Refresh</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('single')">Single Resume</button>
+            <button class="tab-btn" onclick="switchTab('batch')">Batch Upload</button>
+            <button class="tab-btn" onclick="switchTab('stats')">Statistics</button>
+        </div>
+        
+        <!-- Single Resume Tab -->
+        <div id="single" class="tab-content active">
+            <div class="card">
+                <h2>Analyze Single Resume</h2>
+                <div id="messageContainer"></div>
+                
+                <div class="form-group">
+                    <label for="resumeText">Resume Text</label>
+                    <textarea id="resumeText" placeholder="Paste resume text here..."></textarea>
+                </div>
+                
+                <button class="btn" onclick="analyzeSingle()">Analyze Resume</button>
+                
+                <div class="loading" id="singleLoading">
+                    <div class="spinner"></div>
+                    <p>Analyzing resume...</p>
+                </div>
+                
+                <div class="results" id="singleResults">
+                    <h3>Analysis Results</h3>
+                    <div id="singleResultsContent"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Batch Upload Tab -->
+        <div id="batch" class="tab-content">
+            <div class="card">
+                <h2>Batch Resume Processing</h2>
+                <div id="batchMessageContainer"></div>
+                
+                <div class="form-group">
+                    <label for="csvFile">Upload CSV File</label>
+                    <input type="file" id="csvFile" accept=".csv">
+                    <small>Required columns: Resume, Category (optional)</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="threshold">Confidence Threshold (%)</label>
+                    <input type="text" id="threshold" value="50" placeholder="50">
+                </div>
+                
+                <button class="btn" onclick="uploadBatch()">Process File</button>
+                
+                <div class="loading" id="batchLoading">
+                    <div class="spinner"></div>
+                    <p>Processing resumes...</p>
+                </div>
+                
+                <div class="results" id="batchResults">
+                    <h3>Batch Processing Results</h3>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-value" id="totalCount">0</div>
+                            <div class="stat-label">Total Processed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="passedCount">0</div>
+                            <div class="stat-label">Passed Threshold</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="passRate">0%</div>
+                            <div class="stat-label">Pass Rate</div>
+                        </div>
+                    </div>
+                    <div id="batchResultsContent"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Statistics Tab -->
+        <div id="stats" class="tab-content">
+            <div class="card">
+                <h2>System Statistics</h2>
+                <button class="btn" onclick="loadStats()">Load Statistics</button>
+                
+                <div class="loading" id="statsLoading">
+                    <div class="spinner"></div>
+                    <p>Loading statistics...</p>
+                </div>
+                
+                <div id="statsContent">
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-value" id="categoryCount">0</div>
+                            <div class="stat-label">Job Categories</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">336</div>
+                            <div class="stat-label">Recognized Skills</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">85%</div>
+                            <div class="stat-label">Model Accuracy</div>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin-top: 30px; margin-bottom: 15px;">Available Categories</h3>
+                    <div class="categories-grid" id="categoriesGrid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Tab switching
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        // Show message
+        function showMessage(container, message, type) {
+            const msgEl = document.getElementById(container);
+            msgEl.innerHTML = `<div class="message show ${type}">${message}</div>`;
+            setTimeout(() => msgEl.innerHTML = '', 5000);
+        }
+        
+        // Analyze single resume
+        async function analyzeSingle() {
+            const resumeText = document.getElementById('resumeText').value;
+            if (!resumeText.trim()) {
+                showMessage('messageContainer', 'Please enter resume text', 'error');
+                return;
+            }
+            
+            document.getElementById('singleLoading').style.display = 'block';
+            document.getElementById('singleResults').classList.remove('show');
+            
+            try {
+                const response = await fetch('/api/predict', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ resume_text: resumeText })
+                });
+                
+                const data = await response.json();
+                document.getElementById('singleLoading').style.display = 'none';
+                
+                if (data.status === 'success') {
+                    displaySingleResult(data.data);
+                    document.getElementById('singleResults').classList.add('show');
+                } else {
+                    showMessage('messageContainer', data.message, 'error');
+                }
+            } catch (error) {
+                document.getElementById('singleLoading').style.display = 'none';
+                showMessage('messageContainer', 'Error: ' + error.message, 'error');
+            }
+        }
+        
+        // Display single result
+        function displaySingleResult(result) {
+            let html = '<div class="result-item">';
+            html += `<h3>${result.predicted_category}</h3>`;
+            html += `<p>Confidence: <span class="score-badge high">${result.confidence_score}%</span></p>`;
+            html += `<p>Skills Found: ${result.extracted_skills.join(', ')}</p>`;
+            html += `<p>Skill Score: ${result.skill_score}</p>`;
+            html += '<h4 style="margin-top: 15px; margin-bottom: 10px;">All Category Scores:</h4>';
+            
+            const sortedScores = Object.entries(result.all_scores)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 10);
+            
+            html += '<table><tr><th>Category</th><th>Score</th></tr>';
+            sortedScores.forEach(([cat, score]) => {
+                html += `<tr><td>${cat}</td><td><span class="score-badge">${score}%</span></td></tr>`;
+            });
+            html += '</table></div>';
+            
+            document.getElementById('singleResultsContent').innerHTML = html;
+        }
+        
+        // Upload batch
+        async function uploadBatch() {
+            const file = document.getElementById('csvFile').files[0];
+            const threshold = document.getElementById('threshold').value || 50;
+            
+            if (!file) {
+                showMessage('batchMessageContainer', 'Please select a CSV file', 'error');
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('threshold', threshold);
+            
+            document.getElementById('batchLoading').style.display = 'block';
+            document.getElementById('batchResults').classList.remove('show');
+            
+            try {
+                const response = await fetch('/api/upload-csv', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                document.getElementById('batchLoading').style.display = 'none';
+                
+                if (data.status === 'success') {
+                    displayBatchResults(data);
+                    document.getElementById('batchResults').classList.add('show');
+                    showMessage('batchMessageContainer', `Processed ${data.total_processed} resumes`, 'success');
+                } else {
+                    showMessage('batchMessageContainer', data.message, 'error');
+                }
+            } catch (error) {
+                document.getElementById('batchLoading').style.display = 'none';
+                showMessage('batchMessageContainer', 'Error: ' + error.message, 'error');
+            }
+        }
+        
+        // Display batch results
+        function displayBatchResults(data) {
+            document.getElementById('totalCount').textContent = data.total_processed;
+            document.getElementById('passedCount').textContent = data.passed_threshold;
+            const rate = Math.round((data.passed_threshold / data.total_processed) * 100);
+            document.getElementById('passRate').textContent = rate + '%';
+            
+            let html = '<table><tr><th>ID</th><th>Predicted</th><th>Provided</th><th>Confidence</th><th>Skills</th></tr>';
+            
+            data.data.forEach(item => {
+                const match = item.provided_category === item.predicted_category ? 'yes' : 'no';
+                html += `<tr>
+                    <td>${item.id}</td>
+                    <td><strong>${item.predicted_category}</strong></td>
+                    <td>${item.provided_category}</td>
+                    <td><span class="score-badge high">${item.confidence}%</span></td>
+                    <td>${item.skills.slice(0, 2).join(', ')}</td>
+                </tr>`;
+            });
+            
+            html += '</table>';
+            document.getElementById('batchResultsContent').innerHTML = html;
+        }
+        
+        // Load statistics
+        async function loadStats() {
+            document.getElementById('statsLoading').style.display = 'block';
+            
+            try {
+                const response = await fetch('/api/categories');
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    document.getElementById('categoryCount').textContent = data.count;
+                    
+                    let html = '';
+                    data.categories.forEach(cat => {
+                        html += `<div class="category-tag">${cat}</div>`;
+                    });
+                    document.getElementById('categoriesGrid').innerHTML = html;
+                }
+                
+                document.getElementById('statsLoading').style.display = 'none';
+            } catch (error) {
+                document.getElementById('statsLoading').style.display = 'none';
+                alert('Error loading statistics: ' + error.message);
+            }
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadStats();
+        });
+    </script>
+</body>
+</html>

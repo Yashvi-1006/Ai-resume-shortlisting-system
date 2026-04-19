@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Shortlisting System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 900px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .card h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+        
+        .card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #667eea;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            opacity: 0.9;
+        }
+        
+        .features {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .features h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .feature-item {
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .feature-item strong {
+            color: #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Resume Shortlisting System</h1>
+            <p>Intelligent Resume Classification & Candidate Screening</p>
+        </div>
+        
+        <div class="features">
+            <h3>System Capabilities</h3>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <strong>25 Categories</strong> - Job classifications
+                </div>
+                <div class="feature-item">
+                    <strong>336+ Skills</strong> - Recognized competencies
+                </div>
+                <div class="feature-item">
+                    <strong>85%+ Accuracy</strong> - Model performance
+                </div>
+                <div class="feature-item">
+                    <strong>Batch Processing</strong> - Process thousands at once
+                </div>
+                <div class="feature-item">
+                    <strong>Real-time Scoring</strong> - Instant predictions
+                </div>
+                <div class="feature-item">
+                    <strong>JSON Reports</strong> - Exportable results
+                </div>
+            </div>
+        </div>
+        
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">📋</div>
+                <h2>Single Resume</h2>
+                <p>Analyze and classify a single resume with detailed predictions and skill extraction</p>
+                <a href="/dashboard?mode=single" class="btn">Analyze Resume</a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">📁</div>
+                <h2>Batch Upload</h2>
+                <p>Upload CSV files with multiple resumes for bulk processing and shortlisting</p>
+                <a href="/dashboard?mode=batch" class="btn">Upload File</a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h2>Dashboard</h2>
+                <p>View results, statistics, and generate comprehensive reports</p>
+                <a href="/dashboard" class="btn">Open Dashboard</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Phase 5: REST API & Web Service | Powered by AI Resume Shortlisting System v1.0</p>
+        </div>
+    </div>
+</body>
+</html>

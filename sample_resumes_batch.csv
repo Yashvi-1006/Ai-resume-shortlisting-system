@@ -1,0 +1,136 @@
+ID,Category,Resume
+1,Software Engineer,"
+        JOHN DEVELOPER
+        Email: john.dev@example.com | Phone: (555) 123-4567 | LinkedIn: linkedin.com/in/johndev
+        
+        PROFESSIONAL SUMMARY
+        Results-driven Software Engineer with 5+ years of experience building scalable distributed systems.
+        Proven track record of leading cross-functional teams and delivering mission-critical applications.
+        
+        EXPERIENCE
+        Senior Software Engineer | TechCorp | Jan 2020 - Present
+        Led development of microservices architecture serving 10M+ daily users, improving system uptime by 45%
+        Designed and implemented machine learning pipeline processing 500M+ records daily with 99.9% accuracy
+        Managed team of 8 engineers, mentoring 3 junior developers through career progression
+        Reduced deployment time by 60% through CI/CD pipeline optimization
+        
+        Software Engineer | StartupXYZ | Jun 2018 - Dec 2019
+        Architected REST APIs serving 50M+ requests monthly handling billions in transactions
+        Implemented database optimization reducing query latency by 70%, saving 200K annually
+        Built real-time data processing system handling 1M+ events per second
+        
+        EDUCATION
+        Bachelor of Engineering in Computer Science | University of Technology | 2017
+        GPA: 3.8/4.0
+        
+        SKILLS
+        Technical: Python, Java, Go, JavaScript, SQL, AWS, Docker, Kubernetes, Apache Kafka, PostgreSQL
+        Frameworks: Django, Spring Boot, React, Node.js, Flask
+        Cloud: AWS, Google Cloud Platform, Azure
+        Soft Skills: Leadership, System Design, Problem Solving, Communication, Agile
+        "
+2,Data Scientist,"
+        SARAH ANALYST
+        Email: sarah.data@example.com | Phone: (555) 987-6543
+        
+        PROFESSIONAL SUMMARY
+        Data Scientist with 4 years experience in machine learning and advanced analytics.
+        
+        EXPERIENCE
+        Data Scientist | AnalyticsCorp | 2020 - Present
+        Worked on predictive models and data analysis projects
+        Used Python and machine learning to solve business problems
+        Improved model accuracy by 25%
+        
+        Junior Data Analyst | DataStartup | 2019 - 2020
+        Analyzed large datasets and created visualizations
+        Worked with SQL and Python
+        
+        EDUCATION
+        Master of Science in Data Science | State University | 2019
+        
+        SKILLS
+        Python, Machine Learning, SQL, Tableau, Statistics
+        "
+3,Product Manager,"
+        ALEX MANAGER
+        alex.manager@example.com
+        
+        SUMMARY
+        I worked in product management for 3 years
+        
+        JOBS
+        Product Manager at Company1 (2021-2023)
+        Did product stuff
+        Worked with teams
+        Launched features
+        
+        Associate at Company2 (2019-2021)
+        Analyzed products
+        Wrote requirements
+        
+        DEGREE
+        Bachelor in Business, University (2019)
+        
+        TECHNICAL SKILLS
+        Excel, SQL, Tableau
+        "
+4,DevOps Engineer,"
+        MICHAEL INFRASTRUCTURE
+        michael.ops@example.com | +1-555-321-0987 | GitHub: github.com/michaelops
+        
+        PROFESSIONAL SUMMARY
+        DevOps Engineer with 6 years experience designing and maintaining cloud infrastructure.
+        Expert in containerization, infrastructure automation, and CI/CD pipelines.
+        
+        EXPERIENCE
+        Senior DevOps Engineer | CloudSystems Inc | 2021 - Present
+        Architected Kubernetes cluster serving 50+ microservices with 99.95% uptime SLA
+        Automated infrastructure provisioning using Terraform across AWS and GCP, reducing deployment time by 75%
+        Implemented comprehensive monitoring using Prometheus and Grafana covering 500+ metrics
+        Led migration of workloads to Kubernetes, reducing infrastructure costs by 500K annually
+        Mentored 4 junior DevOps engineers on cloud best practices and Kubernetes operations
+        
+        DevOps Engineer | TechScale Ltd | 2018 - 2021
+        Built and maintained CI/CD pipelines using Jenkins processing 10,000+ deployments per day
+        Implemented infrastructure-as-code using Terraform managing 200+ resources
+        Designed disaster recovery solution with 1 hour RTO and 15 minute RPO
+        Reduced infrastructure costs by 40% through resource optimization
+        
+        EDUCATION
+        Bachelor of Science in Information Technology | Tech University | 2017
+        
+        SKILLS
+        Cloud Platforms: AWS, Google Cloud, Azure
+        Container Orchestration: Kubernetes, Docker
+        Infrastructure as Code: Terraform, Ansible
+        CI/CD: Jenkins, GitHub Actions, GitLab CI
+        Monitoring: Prometheus, Grafana, ELK Stack
+        "
+5,UI/UX Designer,"
+        EMMA DESIGNER
+        Email: emma.design@example.com | Portfolio: behance.net/emmadesigner
+        
+        PROFESSIONAL SUMMARY
+        User Experience Designer with 5 years creating intuitive interfaces and conducting user research.
+        
+        EXPERIENCE
+        UX Designer | DesignStudio | 2020-Present
+        Designed mobile app interface used by 2M+ monthly active users with 4.8 star rating
+        Conducted user research with 200+ participants improving feature adoption by 40%
+        Created comprehensive design system reducing design-to-development time by 50%
+        Led redesign of flagship product improving user satisfaction from 3.5 to 4.6 out of 5
+        Collaborated with 3 product managers and 10+ engineers
+        
+        UI Designer | WebDesigns Co | 2018-2020
+        Designed responsive web interfaces using Figma and Adobe XD
+        Conducted A/B testing on 15+ design variations, improving conversion by 35%
+        
+        EDUCATION
+        Bachelor of Fine Arts in Graphic Design | Creative University | 2018
+        
+        SKILLS
+        Design Tools: Figma, Adobe Creative Suite, Sketch
+        UX Research: User Testing, Interviews, Surveys
+        Frontend: HTML, CSS, JavaScript
+        "
